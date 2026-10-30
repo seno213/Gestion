@@ -81,6 +81,7 @@ En ligne sur **https://stock-ia-gray.vercel.app** (projet `stock-ia`, région **
 - **Mode serverless** : `export const maxDuration = 60` sur les routes IA (sam-3.1, ASR, génération d'image) ; la génération d'images de fond passe par `after()` de `next/server` (sur Vercel, le travail post-réponse doit être déclaré, sinon la fonction gèle dès l'envoi de la réponse).
 - **Latence** : les fonctions s'exécutent à Tokyo (`X-Vercel-Id: …::hnd1::…`) ; TiDB étant dans la même région, les requêtes SQL sont ~10 ms au lieu de ~250 ms depuis l'Europe ou l'Afrique.
 - Redéploiement : `npx vercel --prod` (le `.vercelignore` exclut `.env.local`, les tests et `.next`).
+- **Code source** : publié sur **https://github.com/seno213/Gestion** (dépôt public, aucun secret versionné — `.env.local`, `.vercel`, `.next` et les tests sont ignorés).
 
 ## Prochaines étapes
 - Remplacer le code d’accès par un vrai compte (e-mail/mot de passe ou OTP SMS) et ajouter les rôles (propriétaire, employé).
