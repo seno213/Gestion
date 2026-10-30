@@ -90,6 +90,10 @@ button.p:hover{filter:brightness(.92);background:var(--accent);
 button.p:active{transform:translateY(-1px)}
 button.g{border-color:transparent;color:var(--muted)}
 button.g:hover{background:rgba(255,255,255,.08);color:var(--text);border-color:transparent}
+button.g.dgr{color:var(--err)}
+button.g.dgr:hover{background:var(--err-bg);color:var(--err)}
+.lnk{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.lnk:hover{color:var(--text)}
 button:disabled{opacity:.5;cursor:not-allowed;filter:none;box-shadow:none;transform:none}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 

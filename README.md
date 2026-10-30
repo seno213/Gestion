@@ -83,6 +83,11 @@ En ligne sur **https://gestionstockia.vercel.app** (projet Vercel `stock-ia`, r�
 - Redéploiement : `npx vercel --prod` (le `.vercelignore` exclut `.env.local`, les tests et `.next`).
 - **Code source** : publié sur **https://github.com/seno213/Gestion** (dépôt public, aucun secret versionné — `.env.local`, `.vercel`, `.next` et les tests sont ignorés).
 
+## Licence & Conditions
+- **Code source** : licence [MIT](./LICENSE) — libre réutilisation, modification et redistribution avec attribution.
+- **Service** : [Conditions d’utilisation](https://gestionstockia.vercel.app/cgu) publiées sur le site (page `/cgu`) : données enregistrées, traitement par IA (Meta Model API), suppression définitive en un clic, limitation de responsabilité.
+- **Vie privée** : aucune donnée revendue ; « Supprimer la boutique » efface définitivement ventes, produits et photos de la base (action testée dans la suite de sécurité).
+
 ## Prochaines étapes
 - Remplacer le code d’accès par un vrai compte (e-mail/mot de passe ou OTP SMS) et ajouter les rôles (propriétaire, employé).
 - Ajouter les écrans de détail produit et le mode hors ligne (dictée en file d’attente).

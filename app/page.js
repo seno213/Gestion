@@ -6,7 +6,7 @@ import {Coin,Cart,Warn,Chat} from "@/components/icons";
 const GOAL=25000; // objectif démo du jour (FCFA)
 
 export default function Accueil(){
- const {db,notify,leave,tenant}=useStore();
+ const {db,notify,leave,destroy,tenant}=useStore();
  const [hi,setHi]=useState(false),[date,setDate]=useState("");
  const [q,setQ]=useState(""),[ans,setAns]=useState(""),[thinking,setThinking]=useState(false);
  const ask=async()=>{
@@ -88,6 +88,11 @@ export default function Accueil(){
   {tenant&&<p className="mut">Boutique {tenant.name}</p>}
   <div className="acts">
    <button className="g" onClick={leave}>Changer de boutique</button>
+   {tenant&&<button className="g dgr" onClick={destroy}>Supprimer la boutique</button>}
   </div>
+  <p className="mut" style={{textAlign:"center",fontSize:12,marginTop:10}}>
+   <a className="lnk" href="/cgu">Conditions d’utilisation</a>
+   {" · "}Code sous licence <a className="lnk" href="https://github.com/seno213/Gestion" target="_blank" rel="noreferrer">MIT</a>
+  </p>
  </>);
 }

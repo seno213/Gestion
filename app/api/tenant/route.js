@@ -1,7 +1,7 @@
 // Boutiques (tenants) : création, accès par code, session par cookie httpOnly.
 // Le code d'accès de 6 caractères est la clé de partage entre appareils du commerçant.
 import {NextResponse} from "next/server";
-import {createTenant,joinTenant,getTenant} from "@/lib/db";
+import {createTenant,joinTenant,getTenant,deleteTenant} from "@/lib/db";
 
 const OPT={httpOnly:true,sameSite:"lax",path:"/",maxAge:60*60*24*365};
 
@@ -54,8 +54,20 @@ export async function POST(req){
  }
 }
 
-export async function DELETE(){
- const res=NextResponse.json({ok:true});
- res.cookies.delete({name:"tid",path:"/"});
- return res;
+// DELETE : déconnexion simple (cookie effacé, données conservées).
+// ?purge=1 : suppression définitive de la boutique courante et de toutes ses
+// données — action irréversible, confirmée par une fenêtre côté client.
+export async function DELETE(req){
+ try{
+  const tid=req.cookies.get("tid")?.value;
+  const t=tid&&await getTenant(tid);
+  const doPurge=new URL(req.url).searchParams.get("purge")==="1";
+  if(doPurge&&t)await deleteTenant(t.id);
+  const res=NextResponse.json({ok:true,purged:!!(doPurge&&t)});
+  res.cookies.delete({name:"tid",path:"/"});
+  return res;
+ }catch(e){
+  console.error("DB:",e);
+  return NextResponse.json({error:"Base de données indisponible. Réessayez."},{status:503});
+ }
 }
