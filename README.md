@@ -75,7 +75,7 @@ Modèles disponibles : `muse-spark-1.3` (raisonnement, vision, contexte long), `
 
 ## Déploiement (Vercel ✅)
 
-En ligne sur **https://stock-ia-gray.vercel.app** (projet `stock-ia`, région **hnd1 — Tokyo**, la plus proche du cluster TiDB).
+En ligne sur **https://gestionstockia.vercel.app** (projet Vercel `stock-ia`, région **hnd1 — Tokyo**, la plus proche du cluster TiDB).
 
 - **Variables d'environnement** (jamais dans le dépôt) : `META_API_KEY`, `TIDB_HOST`, `TIDB_PORT`, `TIDB_USER`, `TIDB_PASSWORD`, `TIDB_DATABASE` — injectées via `vercel env add … production`.
 - **Mode serverless** : `export const maxDuration = 60` sur les routes IA (sam-3.1, ASR, génération d'image) ; la génération d'images de fond passe par `after()` de `next/server` (sur Vercel, le travail post-réponse doit être déclaré, sinon la fonction gèle dès l'envoi de la réponse).
